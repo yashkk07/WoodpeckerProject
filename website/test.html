@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Storage Example</title>
+</head>
+<body>
+    <h2>Cookie Storage Example</h2>
+    <input type="text" id="inputField" placeholder="Enter value...">
+    <button onclick="storeCookie()">Save</button>
+    <div id="output"></div>
+
+    <script>
+        // Function to set cookie
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+            console.log("Cookie set:", cname, cvalue, expires); // For debugging purposes
+        }
+
+        // Function to get cookie value by name
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim(); // Trim whitespace
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return null; // Return null if cookie not found
+        }
+
+        // Function to display cookie value in div
+        function displayCookie() {
+            var cookieValue = getCookie("inputValue");
+            document.getElementById("output").innerText = "Cookie Value: " + (cookieValue ? cookieValue : "No cookie set");
+            console.log("Displayed cookie value:", cookieValue); // For debugging purposes
+        }
+
+        // Function to store input value in cookie
+        function storeCookie() {
+            var inputValue = document.getElementById("inputField").value;
+            console.log("Input value to be stored:", inputValue); // For debugging purposes
+            setCookie("inputValue", inputValue, 30); // Cookie expires in 30 days
+            displayCookie(); // Display the updated cookie value
+        }
+
+        // Display cookie value on page load
+        window.onload = displayCookie;
+    </script>
+</body>
+</html>

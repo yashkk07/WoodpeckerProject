@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="arriveoclock,travel,alarm,tracker">
+    <meta name="description" content="Your Go-To App for Stress Free Travel Arrivals">
+    <title>Travel Assistant</title>
+    <link rel="icon" type="image/x-icon" href="whitelogo.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --primary-color: #007cb9;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            min-width: 100vh;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #d5eeff;
+            background-image: radial-gradient(circle, #00000069 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .navigation h1 {
+            color: #fff;
+            text-align: center;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color:  #183661;
+        }
+        .resp {
+                    display: none; /* Default to hidden on smaller screens */
+                }
+                @media screen and (min-width: 900px) {
+                    .resp {
+                        display: block; /* Show the div on larger screens */
+                    }
+                }
+        ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            li {
+            float: left;
+            }
+
+            h4 a {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            transition: ease-in-out 0.2s;
+            }
+
+            li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: ease-in-out 0.2s;
+            }
+
+            li a:hover:not(.active) {
+            background-color: #004a76;
+            }
+
+            .active {
+            background-color: #04AA6D;
+            }
+
+    .header {
+        padding: 18px 0;
+        top: 0;
+        width: 100%;
+        transition: all 300ms;
+        z-index: 1;
+        background-color: #007cb9;
+        font-size: xx-large;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .items-center {
+        align-items: center;
+    }
+
+    .logo {
+        height: 3rem;
+        margin-right: 0.5rem;
+    }
+
+    .company-name {
+        font-size: x-large;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .navigation {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-list li {
+        display: inline-block;
+    }
+
+    .nav-list li:last-child {
+        margin-right: 0;
+    }
+    /* Add this CSS to your existing styles */
+.company-name a {
+    font-size: x-large; /* Adjust the font size for the company name */
+}
+
+.navigation ul li a {
+    font-size: x-large; /* Adjust the font size for the navigation links */
+}
+
+@media screen and (max-width: 650px) {
+    .company-name a {
+        font-size: small; /* Adjust the font size for smaller screens */
+        display: none;
+    }
+
+    .navigation ul li a {
+        font-size: small; /* Adjust the font size for smaller screens */
+        padding: 7px 8px;
+    }
+    .footer p{
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 650px) {
+    .company-name a {
+        font-size: larger; /* Adjust the font size for smaller screens */
+    }
+
+    .navigation ul li a {
+        font-size: large; /* Adjust the font size for smaller screens */
+    }
+    .footer p{
+        font-size: large;
+    }
+}
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px; /* Increased max-width */
+            margin-top: 50px;
+            z-index: 10;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            resize: none;
+        }
+        button {
+          margin-top: 20px;
+          padding: 10px;
+          background-color: #007cb9;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+      button:hover {
+          background-color:  #183661;
+      }
+        .hidden {
+            display: none !important;
+        }
+        .loader {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(213, 238, 255);
+            background-image: radial-gradient(circle, #00000069 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 9999;
+        }
+        .loader .logo {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .loader .logo img {
+            width: 100%;
+            height: 100%;
+        }
+        .text-animation {
+            animation: slideIn 2s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes slideIn {
+            0% {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            button {
+                padding: 8px 16px;
+            }
+        }
+        .button-container {
+          display: flex;
+          justify-content: space-between;
+      }
+      .button-container button {
+          flex: 1;
+          margin-right: 5px;
+      }
+
+      .footer {
+            padding: 24px;
+            background-color: #007cb9;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            margin-left: 10px;
+
+        }
+
+        .footer img {
+            height: 32px;
+        }
+
+        .footer__left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1; 
+            
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .slider-container {
+            width: auto; 
+            overflow: hidden;
+            padding: 20px 0 20px 0;
+            margin:0 5px;
+        }
+
+        .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+        }
+
+        .slide {
+        flex: 0 0 auto;
+        width: 90%;
+        max-width: 450px;
+        height: auto;
+        margin: 5px; 
+        padding: 25px 5px;
+        background-color: white;
+        
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        }
+        .slide p{
+            color: #183661;
+        }
+
+        .slide a{
+            color: #183661;
+        }
+        #customer-reviews {
+        margin-top: 8px;
+    }
+
+    #customer-reviews h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #183661;
+        text-align: center;
+
+    }
+
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="logo">
+            <img src="arriveoclocklogo1.png" alt="Company Logo">
+        </div>
+        <h1 class="text-animation">Arrive O'Clock</h1>
+    </div>
+    <div class="content hidden"></div>
+
+        
+
+        <header id="header" class="header">
+            <div class="mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="whitelogo.png" alt="Company Logo" class="logo">
+                    <h4 class="company-name"><a href="../New folder/landing2.html">Arrive O'Clock</a></h4>
+                </div>
+                <nav class="navigation">
+                    <ul class="nav-list">
+                        <li><a href="../New folder/landing2.html">Home</a></li>
+                        <li><a href="../New folder/landing2.html#app-interface">App Interface</a></li>
+                        <li><a href="../website/gmaps.html">Alarm</a></li>
+                        <li><a href="../website/traveltip.html">Tips</a></li>
+                    </ul>
+                </nav>
+                <div class="resp">
+                    <img src="whitelogo.png" alt="Company Logo" class="logo">
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <h1 style="text-align: center;">Travel Assistant</h1>
+            <div id="messages"></div>
+            <form action="" method="post" id="chat-form">
+                <label for="prompt">Your Prompt:</label>
+                <textarea id="prompt" name="prompt" rows="10" cols="100" required></textarea>
+                <div class="button-container">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="resetForm()">Reset</button>
+                </div>
+            </form>
+        </div>
+        <br><br>
+        <div id="customer-reviews">
+            <div style="background-color: #d5eeff; width: 100%;"><h2>Reviews</h2></div>
+            <div class="slider-container">
+                <div class="slider" id="customer-review-slider">
+                    <div class="slide">
+                        <blockquote>
+                            <p>Loving the Arrive O'Clock app! No more missed stops for me. Highly recommended for all commuters.</p>
+                            <p>- John Doe</p>
+                            <a href="https://twitter.com/johndoe/status/1234567890123456789">February 28, 2024</a>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>This app has saved me so much stress during my daily commute. Thank you, Arrive O'Clock!</p>
+                            <p>- Jane Smith</p>
+                            <a href="https://twitter.com/janesmith/status/1234567890123456789">March 1, 2024</a>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>Loving the Arrive O'Clock app! No more missed stops for me. Highly recommended for all commuters.</p>
+                            <p>- John Doe</p>
+                            <a href="https://twitter.com/johndoe/status/1234567890123456789">February 28, 2024</a>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>This app has saved me so much stress during my daily commute. Thank you, Arrive O'Clock!</p>
+                            <p>- Jane Smith</p>
+                            <a href="https://twitter.com/janesmith/status/1234567890123456789">March 1, 2024</a>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>Loving the Arrive O'Clock app! No more missed stops for me. Highly recommended for all commuters.</p>
+                            <p>- John Doe</p>
+                            <a href="https://twitter.com/johndoe/status/1234567890123456789">February 28, 2024</a>
+                        </blockquote>
+                    </div>
+                    <div class="slide">
+                        <blockquote>
+                            <p>This app has saved me so much stress during my daily commute. Thank you, Arrive O'Clock!</p>
+                            <p>- Jane Smith</p>
+                            <a href="https://twitter.com/janesmith/status/1234567890123456789">March 1, 2024</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer class="footer">
+            <div class="footer__left">
+                <p>&copy; 2024 Arrive O'Clock. All rights reserved.</p>
+            </div>
+            <div class="footer__right">
+                <a href="https://www.instagram.com/arriveoclock?igsh=bXFhZ3RuYjU1NGNm" target="_blank"><img src="../New folder/insta.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/company/arriveoclock/" target="_blank"><img src="../New folder/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+                document.querySelector('.content').classList.remove('hidden');
+                document.body.style.overflow = "visible";
+            }, 2000);
+        });
+
+        function resetForm() {
+            location.reload();
+        }
+
+        const slider = document.querySelector('.slider');
+            let currentIndex = 0;
+    
+            function slide() {
+                const slideWidth = document.querySelector('.slide').offsetWidth + 10;
+                const numVisibleSlides = Math.floor(document.querySelector('.slider-container').offsetWidth / slideWidth);
+                const totalSlides = document.querySelectorAll('.slide').length;
+    
+                if (currentIndex >= totalSlides - numVisibleSlides) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+    
+                const translateValue = -currentIndex * slideWidth;
+                slider.style.transform = `translateX(${translateValue}px)`;
+            }
+    
+            setInterval(slide, 2000);
+
+        
+        const model = "llama3";
+        const messages = [{
+        role: "system",
+        content: "You are a travel agent."
+        }];
+
+        async function chat(prompt) {
+        const body = {
+            model: model,
+            prompt: prompt
+        };
+
+        try {
+            const response = await fetch("http://127.0.0.1:11434/api/generate", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+            });
+
+            if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return { role: "assistant", content: data.message.content };
+        } catch (error) {
+            console.error('Error during fetch:', error);
+            throw error;
+        }
+        }
+
+        function appendMessage(role, content) {
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message', role);
+        messageContainer.textContent = `${role}: ${content}`;
+        document.getElementById('messages').appendChild(messageContainer);
+        }
+
+        document.getElementById('chat-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const userInput = document.getElementById('prompt').value.trim();
+        if (!userInput) return;
+
+        appendMessage('user', userInput);
+        messages.push({ role: 'user', content: userInput });
+        document.getElementById('prompt').value = '';
+
+        try {
+            const assistantMessage = await chat(userInput);
+            appendMessage('assistant', assistantMessage.content);
+            messages.push(assistantMessage);
+        } catch (error) {
+            appendMessage('system', `Error: ${error.message}`);
+        }
+        });
+
+    </script>
+</body>
+</html>

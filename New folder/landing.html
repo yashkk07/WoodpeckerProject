@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrive O'Clock - Your Ultimate Travel Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /*h1 {
+            text-shadow: 1px 1px 2px black, 0 0 5px blue, 0 0 2px darkblue;
+            }*/
+        
+        h1,h2,h3 {
+            text-shadow: 1px 1px 2px white, 0 0 5px white, 0 0 2px white;
+        }
+
+        /*h1,h3 {
+            text-shadow: 4px 4px 6px black, 0 0 25px black, 0 0 5px black;
+        }*/
+        
+        .hero-image {
+        background-image: url('bcg-modified.jpeg');
+        background-size: cover;
+        height: 400px;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.6s ease; /* Transition effect */
+        }
+
+        .hero-image.show {
+            opacity: 1; /* Show the element */
+        }
+
+
+        .counter {
+            font-size: 2rem;
+            animation: pulse 1s infinite alternate;
+            color: #4a90e2;
+        }
+
+        .text-blue-custom {
+            color: #070f4e;
+        }
+
+        .text-blue-custom1 {
+            /*color: #ff0000;*/
+            color: black;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+        .bg-blue-custom {
+            background-color: #95edff; /* Background color */
+        }
+
+        .grid > div {
+            border: 2px solid transparent; /* Add transparent border */
+        }
+
+        .grid > div:nth-child() {
+            border-right-color: #603030; /* Add border color to separate the divs */
+        }
+
+        
+
+
+    </style>
+</head>
+
+<body class="bg-blue-50 text-blue-custom bg-blue-custom">
+    <header id="header" class="bg-blue-700 py-4 fixed w-full transition-all duration-300" style="top: 0;">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h4 class="text-2xl font-semibold text-white">Arrive O'Clock</h4>
+            <nav class="flex space-x-4 text-2xl font-semibold text-white">
+                "Your Go-To App for Stress Free Travel Arrivals"
+                <!--
+                <a href="#home" class="text-white hover:text-blue-200">Home</a>
+                <a href="#features" class="text-white hover:text-blue-200">Features</a>
+                <a href="#contact" class="text-white hover:text-blue-200">Contact Us</a>-->
+            </nav>
+            <img src="whitelogo.png" alt="Company Logo" class="h-12">
+        </div>
+    </header>
+    
+    
+
+    <div class="hero-image flex items-center justify-center mt-8">
+        <div class="text-center">
+            <h1 class="text-6xl md:text-5xl lg:text-6xl font-bold text-blue-custom1 mb-4">Arrive On Time, Every Time</h1>
+            <h3><p class="text-lg md:text-xl lg:text-3xl text-blue-custom1 mb-6 px-4">Never miss your stop again with our real-time location tracking and timely alerts.</p></h3>
+            <br><button id="tryButton" class="bg-white text-blue-custom px-6 py-3 rounded-full font-semibold hover:bg-blue-100 transition duration-300" style="border: 2px solid black;">Interested to Try!</button>
+            <p id="clickCount" class="text-blue-custom mt-2 counter" style="text-shadow: 1px 1px 2px white, 0 0 5px white, 0 0 2px white;">0 people interested</p>
+
+        </div>
+    </div>
+
+    <div class="container mx-auto mt-8 px-4 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="rounded-lg bg-blue-custom p-6">
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center">Problem</h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">Many travelers often fall asleep while on public transportation, which leads to them missing their destination. This adds to the problem of navigating unfamiliar routes, as existing solutions don't do a good job of telling travelers when to get off. This causes a <b>lot of stress and inconvenience</b> for commuters.</p>
+            </div>
+            <div class="rounded-lg bg-blue-custom p-6">
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center">Our App: Arrive O'Clock</h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">Your ultimate travel companion designed to ensure you never miss your stop again. With real-time location tracking, our app sends timely alerts 5-10 minutes before you reach your destination, perfect for passengers who may doze off during their journey. Beyond this essential feature, Arrive O'Clock aims to <b>revolutionize your travel experience</b> with additional functionalities tailored to your needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto mt-8 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8"> <!-- Adjusted to have four columns -->
+            <div class="rounded-lg bg-white p-6 border-right-color-white"> <!-- Removed right border -->
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center"><img src="1.png" alt="location" class="h-12"></h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">App offers personalized travel tips, enhancing experience with local insights.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 border-l-0 border-t border-b border-gray-200"> <!-- Removed right border -->
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center"><img src="2.png" alt="alarm" class="h-12"></h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">App tracks real-time location, sets alarms before destination for safety.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 border-l-0 border-t border-b border-gray-200"> <!-- Removed right border -->
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center"><img src="3.png" alt="offline" class="h-12"></h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">App functions offline, providing maps, schedules, and essentials seamlessly.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 border-l-0 border-t border-b border-gray-200"> <!-- Removed right border -->
+                <h2 class="text-4xl font-semibold mb-4 text-blue-custom text-center"><img src="4.png" alt="schedule" class="h-12"></h2>
+                <p class="text-gray-200 text-2xl text-blue-custom">App enables seamless navigation across various transportation modes for efficient travel.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <footer class="bg-blue-700 py-6 text-white mt-8 flex justify-between items-center"> <!-- Updated class and added flex classes -->
+        <div class="container mx-auto">
+            <p class="text-center">&copy; 2024 Arrive O'Clock. All rights reserved.</p>
+        </div>
+        <div class="mr-4 flex items-center"> <!-- Updated margin and added flexbox properties -->
+            <a href="https://www.instagram.com/arriveoclock?igsh=bXFhZ3RuYjU1NGNm" target="_blank" class="text-white hover:text-blue-200 ml-4"><img src="insta.png" alt="Instagram" class="h-12"></a> <!-- Instagram icon -->
+            <a href="https://www.linkedin.com/company/arriveoclock/" target="_blank" class="text-white hover:text-blue-200 ml-4"><img src="linkedin.png" alt="LinkedIn" class="h-12"></a> <!-- LinkedIn icon -->
+        </div>
+    </footer>
+    
+    
+
+    <script>
+        
+
+        window.addEventListener('load', function() {
+        const heroImage = document.querySelector('.hero-image');
+        heroImage.classList.add('show');
+        });
+
+
+        let clickCount = 0;
+        const tryButton = document.getElementById('tryButton');
+        const clickCounter = document.getElementById('clickCount');
+
+        tryButton.addEventListener('click', () => {
+            clickCount++;
+            clickCounter.textContent = `${clickCount} people interested`;
+        });
+    </script>
+</body>
+
+</html>
